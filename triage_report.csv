@@ -1,4 +1,4 @@
 IP_Address,Risk_Score,Country,ISP
-8.8.8.8,0,US,Google LLC
-185.153.196.108,0,MD,IT FRUIT SRL
-45.133.1.109,0,NL,Turien en Co. Assuradeuren B.V.
+193.169.255.109,0,PL,SPRINT S.A.
+45.129.2.17,0,RU,LLC Baxet
+185.220.101.55,100,DE,Network for Tor-Exit traffic.

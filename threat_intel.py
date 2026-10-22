@@ -16,7 +16,7 @@ def load_iocs(filepath):
     """Reads a text file and extracts a list of IP addresses (IoCs)."""
     try:
         with open(filepath, 'r') as file:
-            iocs = [line.strip() for line in file if line.strip()]
+           iocs = [line.split('#')[0].strip() for line in file if line.split('#')[0].strip()]
         print(f"[*] Successfully loaded {len(iocs)} IoCs from {filepath}")
         return iocs
     except FileNotFoundError:
