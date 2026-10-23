@@ -1,4 +1,9 @@
 IP_Address,Risk_Score,Country,ISP
-193.169.255.109,0,PL,SPRINT S.A.
-45.129.2.17,0,RU,LLC Baxet
-185.220.101.55,100,DE,Network for Tor-Exit traffic.
+172.67.213.19,0,US,"Cloudflare, Inc."
+46.224.34.207,0,DE,Hetzner Online GmbH
+91.107.248.62,0,DE,Hetzner Online GmbH
+141.94.247.208,0,FR,OVH SAS
+78.47.200.105,0,DE,Hetzner Online GmbH
+193.123.70.31,0,AE,Oracle Corporation
+156.70.89.50,0,US,Bird.com Inc.
+209.85.220.41,0,FI,Google LLC

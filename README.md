@@ -1,40 +1,38 @@
-#  Threat Intelligence IoC Extractor
+# Threat Intelligence Triage Automation
 
-<p align="left">
-  <img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white">
-  <img src="https://img.shields.io/badge/Security-Blue_Team-0052CC?style=flat-square">
-  <img src="https://img.shields.io/badge/API-AbuseIPDB-FF6600?style=flat-square">
-</p>
+## 🔹 Project Overview: Engineering SOC Automation
+In modern Security Operations Centers (SOC), analysts face significant alert fatigue. By applying software engineering principles and REST API integration to defensive operations, this project automates the enrichment of Indicators of Compromise (IoCs). The Python-based tool extracts network artifacts and queries threat intelligence feeds, bridging the gap between raw telemetry and actionable incident response data.
 
-## 🔹 Project Overview
-This Python-based command-line utility automates the initial triage of suspicious IP addresses (Indicators of Compromise - IoCs). 
+## 🔹 Real-World Integration: Phishing Incident Response
+This tool does not operate on theoretical data. It is integrated directly with my 🔗 [Phishing Incident Response Lab](https://github.com/magda-uk/phishing-incident-response-lab/blob/main/README.md) as part of an end-to-end SecOps workflow. 
 
-Designed for Security Operations Center (SOC) workflows, the script parses local alert logs, queries the **AbuseIPDB REST API** for threat intelligence, and exports the enriched telemetry into a structured CSV report for further defensive analysis.
+The IPs analyzed below were extracted from raw `.eml` headers of real-world phishing attacks targeting my personal inboxes, including:
+* **Brand Impersonation:** Mercadona Food Box & Doble Pack Gafas campaigns.
+* **Financial Fraud:** Advance Fee Fraud (419) and Santander invoice lures.
+* **Service Spoofing:** NHS Medicare Kits and UK TV Licence verification phishing.
 
-## 🔹 Core Capabilities
-* **Automated Threat Triage:** Batch processes IP addresses from raw text files (`alerts.txt`), simulating SIEM alert extraction workflows.
-* **API Integration & JSON Parsing:** Connects to the AbuseIPDB API to retrieve real-time risk scores, geographic origins, and ISP data, efficiently parsing and filtering the JSON payload.
-* **Secure Credential Management:** Implements `python-dotenv` to isolate and protect sensitive API keys from version control.
-* **Structured Data Export:** Automatically flattens and writes the correlated threat intelligence into a `triage_report.csv` file for seamless integration into ticketing systems or SIEM watchlists.
 
-## 🔹 Installation & Usage
+## 🔹  Threat Intelligence Findings: The Cloud Evasion Paradox
+The automated triage against the AbuseIPDB API yielded a critical operational insight: **all extracted origin IPs returned a 0% risk score**. 
 
-**1. Clone the repository and install dependencies:**
-```js
-git clone [https://github.com/magda-uk/threat-intel-extractor.git](https://github.com/magda-uk/threat-intel-extractor.git)
-cd threat-intel-extractor
-pip install requests python-dotenv
-```
-**2. Configure API Credentials:**
-Create a `.env` file in the root directory and add your free AbuseIPDB API key:
-```js
-ABUSEIPDB_API_KEY=your_api_key_here
-```
-**3. Run the Analyzer:**
-Add suspicious IPs to `alerts.txt` (one per line) and execute the script:
-```js
-python threat_intel.py
-```
+Rather than a failure of detection, this highlights a sophisticated evasion strategy by modern threat actors:
+1. **Evasion via Cloud Providers (DE, FR, AE):** Attackers hosted malicious infrastructure on legitimate virtual private servers across Hetzner, OVH, and Oracle to leverage their default positive network reputation.
+2. **Abuse of Trusted Services (US, FI):** The campaigns actively abused enterprise email marketing platforms (SparkPost/Bird.com) and legitimate webmail gateways (Google LLC) to successfully bypass SPF/DKIM authentication checks.
+3. **CDN Masking:** Malicious landing pages were hidden behind Cloudflare reverse proxies to obfuscate the true origin server IP.
+
+**Conclusion:** Static IP reputation is insufficient for modern triage. Because attackers continuously rotate through trusted enterprise infrastructure, automated IP checks must be correlated with behavioral analysis, payload inspection, and URL/Domain intelligence.
+
+## 🔹 SOC Visualization & Triage Reporting
+To facilitate rapid decision-making, the Python script exports the enriched data into a structured CSV format. This dataset is ingested into Power BI to generate a geographic heatmap of the attack infrastructure, a standard practice for tracking persistent threat origins.
+
+![Geographic Threat Map](/images/mapa-amenazas.png)
+*(Geographic distribution of phishing infrastructure showing nodes across US, Germany, France, Finland, and UAE).*
+
+## 🔹 Future Enhancements
+To counter the "0% Risk Score" paradox observed in shared cloud infrastructure, future iterations of this tool will include:
+* **VirusTotal API Integration:** Expanding the script to analyze associated domains, URLs, and file hashes to detect malicious payloads hidden behind legitimate CDN proxies.
+* **Automated ASN Extraction:** Grouping threat actors by Autonomous System Number to identify systemic abuse in specific hosting providers.
+
 ## 🔹Connect with me
 
 [![Magda Dominguez LinkedIn](https://img.shields.io/badge/Magda_Dominguez-Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=000000)](https://www.linkedin.com/in/magda-d-infosec)
