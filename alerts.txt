@@ -1,0 +1,8 @@
+172.67.213.19 # Case Santander/inFakt Invoice Campaign
+46.224.34.207 # Case Mercadona Brand Impersonation and Advanced Evasion Wave 1 
+91.107.248.62 # Case Mercadona Brand Impersonation and Advanced Evasion Wave 2
+141.94.247.208 # Case Mercadona Brand Impersonation and Advanced Evasion Wave 3
+78.47.200.105 # Case NHS Medicare Credential Harvesting
+193.123.70.31 # Case: TV Licensing  Amazon SES Evasion
+156.70.89.50 # Case: Optics Email Marketing Grayware
+209.85.220.41 # Case: Advance-Fee Fraud 419 Scam Campaign
